@@ -1,0 +1,219 @@
+@extends('admin.includes.layout')
+
+@section('title')
+    Add :: User
+@endsection
+@section('css')
+    <style>
+        .errorColor{
+            color: #FF0000;
+        }
+    </style>
+@endsection
+@section('content')
+
+    <div class="main-content">
+        <div class="breadcrumbs" id="breadcrumbs">
+            <script type="text/javascript">
+                try{ace.settings.check('breadcrumbs' , 'fixed')}catch(e){}
+            </script>
+
+            <ul class="breadcrumb">
+                <li>
+                    <i class="icon-home home-icon"></i>
+                    <a href="{{ route('admin.dashboard') }}">Home</a>
+                </li>
+                <li>
+                    <a href="{{ route('admin.user') }}">User</a>
+                </li>
+                <li class="active">Add</li>
+            </ul><!-- .breadcrumb -->
+
+          <!-- #nav-search -->
+        </div>
+
+        <div class="page-content">
+            <div class="page-header">
+                <h1>
+                    User Manager
+                    <small>
+                        <i class="icon-double-angle-right"></i>
+                        Add Form
+                    </small>
+                </h1>
+            </div><!-- /.page-header -->
+
+            <div class="row">
+                <div class="col-xs-12">
+                    <!-- PAGE CONTENT BEGINS -->
+
+                    @if (session()->has('success_message'))
+                        <div class="alert alert-block alert-success">
+                            <button type="button" class="close" data-dismiss="alert">
+                                <i class="icon-remove"></i>
+                            </button>
+
+                            <p>
+                                <strong>
+                                    <i class="icon-ok"></i>
+                                    Well done!
+                                </strong>
+                                {{ session()->get('success_message') }}
+                            </p>
+                        </div>
+                    @endif
+
+
+                    <form class="form-horizontal" role="form" method="post" action="{{ route('admin.user.store') }}">
+                        {!! csrf_field() !!}
+
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label no-padding-right {{ $errors->has('name') ? ' has-error' : '' }}" for="name"> User Name</label>
+                            <div class="col-sm-9">
+                                <input type="text" name="name" value="{{ old('name') }}" placeholder="Username" class="col-xs-10 col-sm-5">
+                                @if ($errors->has('name'))
+                                    <span class="help-block">
+                                        <strong class="errorColor">{{ $errors->first('name') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
+
+                        <div class="space-4"></div>
+
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label no-padding-right {{ $errors->has('email') ? ' has-error' : '' }}" for="email"> Email</label>
+                            <div class="col-sm-9">
+                                <input type="email" name="email" value="{{ old('email') }}" placeholder="Valid Email" class="col-xs-10 col-sm-5">
+                                @if ($errors->has('email'))
+                                    <span class="help-block">
+                                        <strong class="errorColor">{{ $errors->first('email') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
+
+                        <div class="space-4"></div>
+
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label no-padding-right {{ $errors->has('first_name') ? ' has-error' : '' }}" for="first_name"> First Name</label>
+                            <div class="col-sm-9">
+                                <input type="text" name="first_name" value="{{ old('first_name') }}" placeholder="First Name" class="col-xs-10 col-sm-5">
+                                @if ($errors->has('first_name'))
+                                    <span class="help-block">
+                                        <strong class="errorColor">{{ $errors->first('first_name') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
+
+                        <div class="space-4"></div>
+
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label no-padding-right {{ $errors->has('middle_name') ? ' has-error' : '' }}" for="middle_name"> Middle Name(Optional)</label>
+                            <div class="col-sm-9">
+                                <input type="text" name="middle_name" value="{{ old('middle_name') }}" placeholder="Middle Name" class="col-xs-10 col-sm-5">
+                                @if ($errors->has('middle_name'))
+                                    <span class="help-block">
+                                        <strong class="errorColor">{{ $errors->first('middle_name') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
+
+                        <div class="space-4"></div>
+
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label no-padding-right {{ $errors->has('last_name') ? ' has-error' : '' }}" for="last_name"> Last Name</label>
+                            <div class="col-sm-9">
+                                <input type="text" name="last_name" value="{{ old('last_name') }}"  placeholder="Last Name" class="col-xs-10 col-sm-5">
+                                @if ($errors->has('last_name'))
+                                    <span class="help-block">
+                                        <strong class="errorColor">{{ $errors->first('last_name') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
+
+                        <div class="space-4"></div>
+
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label no-padding-right {{ $errors->has('contact') ? ' has-error' : '' }}" for="contact"> Contact </label>
+                            <div class="col-sm-9">
+                                <input type="text"  name="contact" autocomplete="off" value="{{ old('contact') }}"  placeholder="Valid Phone" class="col-xs-10 col-sm-5">
+                                @if ($errors->has('contact'))
+                                    <span class="help-block">
+                                        <strong class="errorColor">{{ $errors->first('contact') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
+
+                        <div class="space-4"></div>
+
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label no-padding-right {{ $errors->has('address') ? ' has-error' : '' }}" for="address"> Address</label>
+                            <div class="col-sm-9">
+                                <textarea name="address" cols="30" rows="10" class="form-control" placeholder="Address">{{ old('address') }}</textarea>
+                                @if ($errors->has('address'))
+                                    <span class="help-block">
+                                        <strong class="errorColor">{{ $errors->first('address') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
+
+                        <div class="space-4"></div>
+
+
+                        <hr>
+
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label no-padding-right {{ $errors->has('password') ? ' has-error' : '' }}" for="password">Password</label>
+                            <div class="col-sm-9">
+                                <input type="password" name="password"  placeholder="Password" class="col-xs-10 col-sm-5">
+                                @if ($errors->has('password'))
+                                    <span class="help-block">
+                                        <strong class="errorColor">{{ $errors->first('password') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
+
+                        <div class="space-4"></div>
+                        <div class="clearfix form-actions">
+                            <div class="col-md-offset-3 col-md-9">
+                                <button class="btn btn-info" type="submit">
+                                    <i class="icon-ok bigger-110"></i>
+                                    Create Account
+                                </button>
+
+                                &nbsp; &nbsp; &nbsp;
+                                <button class="btn" id="resetButton" type="reset">
+                                    <i class="icon-undo bigger-110"></i>
+                                    Reset
+                                </button>
+                            </div>
+                        </div>
+
+                    </form>
+
+
+                </div><!-- /.col -->
+            </div><!-- /.row -->
+        </div><!-- /.page-content -->
+    </div>
+
+@endsection
+@section('js')
+    <script>
+        $(document).ready(function(){
+            document.getElementsByTagName('input').value='';
+
+            $("#resetButton").click(function(){
+                document.getElementsByTagName('input').value='';
+            });
+        });
+    </script>
+
+    @endsection

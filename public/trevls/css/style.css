@@ -1,0 +1,309 @@
+body {
+	font-family: 'Open Sans', sans-serif !important;
+	padding-bottom:25px;
+}
+section.rent-body, section.details-container {
+	border-bottom:1px solid #eee;
+	padding-bottom:50px;
+}
+section, section h4 {
+	padding:25px 0;
+}
+.rent-body h2, .rental-service-container h2 {
+	color:#00adb5;
+	font-size:24px;
+	    margin-bottom: 10px;
+}
+.top-bar {
+	position:relative;
+}
+.offer {
+	    border: 1px solid #eee;
+    min-width: 450px;
+    padding: 10px 25px;
+    position: absolute;
+    right: 0;
+    top: 0px;
+}
+.offer h2 {
+	    display: inline;
+    font-size: 18px;
+    color: #444;
+}
+.offer button {
+	display:inline-block;
+	text-align:right;
+}
+.button-right {
+	text-align:right;
+}
+.rent-body .fa {
+	color:#f5a623;
+}
+.rent-body h3, .rental-service-container h3 {
+	color:#999;
+	font-size:18px;
+	margin-top:0px;
+	 margin-bottom: 10px;
+}
+.rent-body h4, .review-reseve h4 {
+	color:#444;
+	font-size:18px;
+}
+.rent-body strong {
+	color:#444;
+	
+}
+.rent-body .begin-detail {
+	    margin-left: 15px;
+    margin-right: 15px;
+	letter-spacing:1px;
+}
+.rent-body .detail-title {
+	font-weight: 400;
+    padding-left: 0;
+    font-size: 13px;
+}
+.rent-body .detail-list {
+	text-align:right;
+	padding-right:0;
+	    color: #666;
+}
+.price-cross {
+	text-decoration:line-through;
+	color:#d03102;
+}
+.price-fine {
+	    font-size: 22px;
+    margin-top: -10px;
+    margin-bottom: 15px;
+	color:#000 !important;
+}
+button.in-demand {
+	font-size:10px;
+}
+.detail-container {
+	border-bottom:1px solid #eee;
+	margin-left:0;
+	margin-right:0;
+	    padding-bottom: 4px;
+    margin-bottom: 6px;
+}
+.reserve-btn {
+	text-align:center;
+	letter-spacing:1px;
+}
+.reserve-btn .reserve, form .reserve-btn {
+	width:80%;
+	border-radius:0 !important;
+	background:#00adb5 !important;
+	border:1px solid #00adb5;
+	    letter-spacing: 2px;
+		margin-bottom:8px;
+}
+.reserve-btn .reserve:hover, form .reserve-btn:hover, .rebel-member .reserve-btn:hover, .total-btn .reserve-btn:hover {
+	background:#006c71 !important;
+	border:1px solid #006c71;
+	-webkit-transition: background 0.5s ease-in-out, color 0.5s ease-in-out;
+    transition: background 0.5s ease-in-out, color 0.5s ease-in-out;
+	color:#fff !important;
+}
+.reserve-btn p {
+	font-size:13px;
+	color:#444 !important
+}
+.e-begin-section, .e-full-section, .e-premium-section {
+	    padding: 15px 40px !important;
+		box-shadow:0px 10px 25px rgba(0,0,0,0.1);
+		background:#fff;
+}
+.e-begin-section:hover, .e-full-section:hover, .e-premium-section:hover {
+	border:1px solid #00adb5;
+	box-shadow:0px 10px 25px rgba(0,173,181,0.3);
+	border-radius:8px;
+}
+form .form-control {
+	border:none !important;
+	border-bottom:1px solid #eee !important;
+	    border-radius: 0; 
+    -webkit-box-shadow:none !important; 
+     box-shadow:none !important;
+	 height:1px !important; 
+}
+form {
+	    padding: 0 50px 0 0;
+}
+form .form-group {
+	margin-bottom:25px !important;
+}
+form label {
+	color:#999;
+	font-weight:400 !important;
+}
+form h3, form h4 {
+	margin-bottom:0;
+}
+form h3, .rebel-member h3 {
+	    font-size: 18px;
+    color: #444;
+    font-weight: bold;
+}
+form h4 {
+	    font-size: 14px;
+    color: #d03102;
+    font-weight: 400;
+}
+form .checkbox p {
+	color:#444;
+	font-size:13px;
+}
+form .checkbox p.checkbox-detail, .save-time-down p  {
+	font-size:12px;
+	color:#444;
+	font-weight:400;
+}
+.save-time-down p  {
+	margin-bottom:35px;
+}
+span.link {
+	color:#00adb5;
+}
+form .reserve-btn {
+	color:#fff !important;
+	max-width:250px !important;
+	padding:10px 25px;
+	font-size:13px;
+}
+.rebel-member, .rental-service-container {
+	    padding: 25px 30px;
+    border: 1px solid #eee;
+}
+.rebel-member p {
+	font-size:13px;
+}
+.rebel-member .reserve-btn {
+	border:1px solid #00adb5 !important;
+	background:transparent !important;
+	border-radius:0 !important;
+	margin-top:10px;
+	margin-bottom:45px;
+	padding:10px 25px  !important;
+	font-size:13px;
+
+}
+.review-container {
+	    padding: 0 70px 0 0 !important;
+}
+.review-heading {
+	border-bottom:1px solid #eee;
+	display:block;
+	    margin: 10px 0 25px 0;
+
+}
+.review-heading h3 {
+	border-bottom:2px solid #00adb5;
+	display:inline-block;
+	margin: 0 0 -2px 0;
+    padding-bottom: 5px;
+	font-weight:bold;
+	color:#444;
+	min-width:255px;
+}
+.review-reseve .detail-title {
+	font-size:16px;
+}
+.review-reseve .detail-list, .rental-service-container h4 {
+	color:#00adb5;
+	text-transform:uppercase;
+	font-size:11px;
+	text-align:right;
+	font-weight:bold;
+}
+.review-reseve .detail-title p, .review-reseve .detail-list p {
+	color:#444;
+	font-size:13px;
+	font-weight:bold;
+}
+ .review-reseve .detail-list p {
+	text-align:right;
+	text-transform:capitalize;
+}
+.review-list {
+	margin-bottom:35px;
+}
+.review-list form input {
+	    padding: 5px 15px;
+		font-size:13px;
+		font-weight:bold;
+}
+.review-list p.total {
+		font-size:24px;
+		font-weight:bold;
+		padding-bottom:18px;
+}
+.total-btn, .total-btn p {
+	text-align:right;
+	
+}
+.total-btn .reserve-btn {
+	margin-bottom:10px;
+	background:#00adb5 !important;
+	border:1px solid #00adb5 !important;
+	border-radius:0 !important;
+	min-width:320px;
+	color:#fff !important;
+}
+.rebel-member .reserve-btn {
+	border:1px solid #00adb5 !important;
+	background:transparent !important;
+	
+	margin-top:10px;
+	margin-bottom:45px;
+	padding:10px 25px  !important;
+	font-size:13px;
+
+}
+.rental-service h3, .view-terms h3 {
+	color:#444;
+	font-weight:bold;
+	margin-top:0;
+}
+.rental-service-container h2, .rental-service-container h4 {
+	padding:0 10px;
+	margin-top:0;
+}
+.rental-service-container h4 {
+	padding:10px 0;
+	margin-top:0;
+}
+.rental-service-container h3 {
+	border-bottom:1px solid #eee;
+	padding-bottom:8px;
+}
+.rental-service-container form input {
+	border:1px solid #eee !important;
+	height:35px !important;
+	width:100%;
+}
+.rental-service-container form {
+	padding:0;
+}
+.rental-service-container form label {
+	font-size:11px;
+	color:#444;
+	font-weight:bold;
+}
+.modify-date-time, .view-terms h4 {
+	text-align:right;
+	margin-top:8px;
+	font-size:11px;
+	text-transform:uppercase;
+	color:#00adb5;
+	font-weight:bold;
+}
+.view-terms {
+	padding:20px 0;
+}
+.view-terms h4 {
+	padding:10px 0;
+}
