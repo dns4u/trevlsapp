@@ -15,13 +15,15 @@ use Illuminate\Support\Facades\Validator;
 
 class HomeController extends Controller
 {
+
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
+
         return view('front.home.index');
     }
 
@@ -35,8 +37,6 @@ class HomeController extends Controller
     //store the address and the date of the user in session
     public function store(ChooseVehicleValidation $request)
     {
-
-
             $dropoffAddress=$request->get('dropoffAddress');
             $returnAddress=$request->get('returnAddress');
             $datepickFrom=$request->get('datepickerFrom');
@@ -55,49 +55,32 @@ class HomeController extends Controller
     //show the all product
     public function select(Request $request)
     {
-
-        if(\url('/').'/' === URL::previous()){
-
-            $data=[];
-            $data['rows']=Product::all();
-            return view('front.home.select',compact('data'));
-        }else{
-            return redirect()->route('front.home');
-        }
+                $data=[];
+                $data['rows']=Product::all();
+                return view('front.home.select',compact('data'));
 
     }
     //show the product review page
     public function review(Request $request,$id){
-       if(\url('/product/select') === URL::previous()){
-           $data=[];
-           $data['row']=Product::find($id)->toArray();
-           $customer['dropoffAddress']=$request->session()->get('dropoffAddress');
-           $customer['returnAddress']=$request->session()->get('returnAddress');
-           $customer['datepickerFrom']=$request->session()->get('datepickerFrom');
-           $customer['datepickerTo']=$request->session()->get('datepickerTo');
-
-           //$replaceFromDate=str_replace('/','-', $request->session()->get('datepickerFrom'));
-           //$repalceToDate=str_replace('/','-',$request->session()->get('datepickerTo'));
-
-           $substrFromDate=substr($request->session()->get('datepickerFrom'),0,10);
-           $substrFromTime=substr($request->session()->get('datepickerFrom'),11);
-           $substrToDate=substr($request->session()->get('datepickerTo'),0,10);
-           $substrToTime=substr($request->session()->get('datepickerTo'),11);
-           $days=$this->dateDiff($substrFromDate,$substrToDate);
-           $customer['days']=$days;
-           $customer['priceOfProductPerDay']=$customer['days'] * $data['row']['new_price_per_day'];
-           $customer['totalPriceOfProduct']=$customer['priceOfProductPerDay'] + $data['row']['reservation_delivery_price'] + $data['row']['taxes_fees'];
 
 
+              $data=[];
+              $data['row']=Product::find($id)->toArray();
+              $customer['dropoffAddress']=$request->session()->get('dropoffAddress');
+              $customer['returnAddress']=$request->session()->get('returnAddress');
+              $customer['datepickerFrom']=$request->session()->get('datepickerFrom');
+              $customer['datepickerTo']=$request->session()->get('datepickerTo');
 
-           $newArray=array_merge($data,$customer);
-
-
-           return view('front.home.review',compact('newArray'));
-       }else{
-           return redirect()->route('front.home');
-       }
-
+              $substrFromDate=substr($request->session()->get('datepickerFrom'),0,10);
+              $substrFromTime=substr($request->session()->get('datepickerFrom'),11);
+              $substrToDate=substr($request->session()->get('datepickerTo'),0,10);
+              $substrToTime=substr($request->session()->get('datepickerTo'),11);
+              $days=$this->dateDiff($substrFromDate,$substrToDate);
+              $customer['days']=$days;
+              $customer['priceOfProductPerDay']=$customer['days'] * $data['row']['new_price_per_day'];
+              $customer['totalPriceOfProduct']=$customer['priceOfProductPerDay'] + $data['row']['reservation_delivery_price'] + $data['row']['taxes_fees'];
+              $newArray=array_merge($data,$customer);
+              return view('front.home.review',compact('newArray'));
     }
      public function storeReview(Request $request,$id){
       $rules=[
@@ -141,19 +124,14 @@ class HomeController extends Controller
     //show the user detail form to user
        public function userDetail(Request $request,$id){
 
-        if (\url('/product/review/'.$id === URL::previous())){
-            $data=[];
-            $data['row']=Product::find($id);
-            return view('front.home.userDetail',compact('data'));
-        }else{
-            return redirect()->route('front.home');
-        }
 
+             $data=[];
+             $data['row']=Product::find($id);
+             return view('front.home.userDetail',compact('data'));
 
-        }
+     }
        //store the user detail send from the user detail form
         public function userDetailSend(Request $request,$id){
-
             $this->validate($request,[
                'first_name'=>'required|string',
                 'last_name'=>'required|string',
@@ -269,16 +247,13 @@ class HomeController extends Controller
              $message->subject('New Order Recived');
             });
 
-
+         $request->session()->flush();
         $request->session()->flash('success_message','Your order is successfully send');
         return redirect()->route('front.home');
 
 
         }
-        //show the uterms and condrition page
-        public function viewTermsAndConditions(Request $request){
-            return view('front.home.termsAndConditions');
-        }
+
 
     /**
      * Display the specified resource.

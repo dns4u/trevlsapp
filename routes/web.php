@@ -10,23 +10,19 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-
-//Route::get('/', function () {
-//    return view('welcome');
-//});
 Route::group(['prefix'=>'admin/','as'=>'admin.','namespace'=>'Admin\\','middleware'=>'auth'],function (){
 
-    Route::get('profile',                 ['as' => 'profile',               'uses' => 'UserController@profile']);
-    Route::post('profile',                ['as' => 'profile.update',        'uses' => 'UserController@profileUpdate']);
-    Route::get('user',                            ['as' => 'user',                  'uses' => 'UserController@index']);
-    Route::get('user/show/{id}',                  ['as' => 'user.show',             'uses' => 'UserController@show']);
-    Route::get('user/create',                     ['as' => 'user.create',           'uses' => 'UserController@create']);
-    Route::post('user/store',                     ['as' => 'user.store',            'uses' => 'UserController@store']);
-    Route::get('user/edit/{id}',                  ['as' => 'user.edit',             'uses' => 'UserController@edit']);
-    Route::post('user/update/{id}',               ['as' => 'user.update',           'uses' => 'UserController@update']);
-    Route::get('user/delete/{id}',                ['as' => 'user.delete',           'uses' => 'UserController@destroy']);
+    Route::get('profile',                            ['as' => 'profile',               'uses' => 'UserController@profile']);
+    Route::post('profile',                           ['as' => 'profile.update',        'uses' => 'UserController@profileUpdate']);
+    Route::get('user',                               ['as' => 'user',                  'uses' => 'UserController@index']);
+    Route::get('user/show/{id}',                     ['as' => 'user.show',             'uses' => 'UserController@show']);
+    Route::get('user/create',                        ['as' => 'user.create',           'uses' => 'UserController@create']);
+    Route::post('user/store',                        ['as' => 'user.store',            'uses' => 'UserController@store']);
+    Route::get('user/edit/{id}',                     ['as' => 'user.edit',             'uses' => 'UserController@edit']);
+    Route::post('user/update/{id}',                  ['as' => 'user.update',           'uses' => 'UserController@update']);
+    Route::get('user/delete/{id}',                   ['as' => 'user.delete',           'uses' => 'UserController@destroy']);
 
-    Route::get('dashboard',               ['as'=>'dashboard',               'uses'=>'DashboardController@index']);
+    Route::get('dashboard',                          ['as'=>'dashboard',               'uses'=>'DashboardController@index']);
 
     Route::get('product',                            ['as' => 'product',                     'uses' => 'ProductController@index']);
     Route::get('product/show/{id}',                  ['as' => 'product.show',                'uses' => 'ProductController@show']);
@@ -48,14 +44,12 @@ Route::group(['as'=>'front.','namespace'=>'Front\\'],function (){
     Route::post('/product/review/{id}',                 ['as'=>'product.review.store',              'uses'=>'HomeController@storeReview']);
     Route::get('/product/userdetail/{id}',              ['as'=>'product.userdetail',               'uses'=>'HomeController@userDetail']);
     Route::post('/product/userdetail/{id}',             ['as'=>'product.userdetail.send',          'uses'=>'HomeController@userDetailSend']);
-    Route::get('/product/terms',                         ['as'=>'product.terms',                    'uses'=>'HomeController@viewTermsAndConditions']);
-
 });
 Route::get('/404', function () {
     return view('errors.404');
 });
-//Auth::routes();
+
 Route::get('login','Auth\LoginController@showLoginForm')->name('login');
 Route::post('login','Auth\LoginController@login');
 Route::post('logout','Auth\LoginController@logout')->name('logout');
-//Route::get('/home', 'HomeController@index')->name('home');
+
