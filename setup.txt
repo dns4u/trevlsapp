@@ -1,0 +1,50 @@
+Project setup steps
+################################## Follow the following step to install the App #########################
+STEP 1:
+Download the app from 
+https://gitlab.com/santosh007/trevlsapp
+Step 2:
+IF you Have composer install Then run the following command to setup your project
+composer install
+Step 3:
+Copy the content of .env.example file to .env file by using following script or cmd command
+@php -r \"file_exists('.env') || copy('.env.example', '.env');\"
+OR
+If you are a window user run the command 
+cp .env.example .env
+Step 4:
+Generate the API_KEY By using following composer command
+php artisan key:generate
+Step 5:
+Database setup
+DB_CONNECTION=mysql (Database Provider like mysql,mssql etc)
+DB_HOST=127.0.0.1 (Host)
+DB_PORT=3306 (port on whic your database is running)
+DB_DATABASE=trevlsdb (database name)
+DB_USERNAME=root (database user name)
+DB_PASSWORD=     (password if you have)
+Run composer command 
+php artisan migrate db:seed
+#####Your admin user name and password are as follows#####
+Username=root
+Email=root@gmail.com
+Step 6:
+Email setup 
+First login to your gmail account and under My account > Sign In And Security > Sign In to google,
+ enable two step verification, then you can generate app password, and you can use that app password in .env file.
+
+Your .env file will then look something like this
+
+MAIL_DRIVER=smtp
+MAIL_HOST=smtp.gmail.com
+MAIL_PORT=587
+MAIL_USERNAME=myemail@gmail.com (your email address)
+MAIL_PASSWORD=apppassword  (your app key which you generate in gmail)
+MAIL_ENCRYPTION=tls
+After that replace the email which is in app/Http/Controllers/Front/HomeController at line 246 
+By your email .
+Thank Your Happy codding ..........
+
+
+
+
