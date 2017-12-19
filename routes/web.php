@@ -11,6 +11,8 @@
 |
 */
 Route::group(['prefix'=>'admin/','as'=>'admin.','namespace'=>'Admin\\','middleware'=>'auth'],function (){
+     Route::get('/',                          ['as'=>'admin',               'uses'=>'DashboardController@index']);
+
 
     Route::get('profile',                            ['as' => 'profile',               'uses' => 'UserController@profile']);
     Route::post('profile',                           ['as' => 'profile.update',        'uses' => 'UserController@profileUpdate']);
