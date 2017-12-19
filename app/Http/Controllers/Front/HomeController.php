@@ -38,7 +38,7 @@ class HomeController extends Controller
     public function store(ChooseVehicleValidation $request)
     {
             $dropoffAddress=$request->get('dropoffAddress');
-            $returnAddress=$request->get('returnAddress');
+            $returnAddress=$request->get('returnAddress')?$request->get('returnAddress'):$request->get('dropoffAddress');
             $datepickFrom=$request->get('datepickerFrom');
             $datepickerTo=$request->get('datepickerTo');
 
@@ -241,11 +241,11 @@ class HomeController extends Controller
                     $data['row']['taxes_fees'] +  $insurance_personal_price + $insurance_roadside_price
 
             );
-            Mail::send('emails.contact',$data,function ($message) use ($data){
+           /*Mail::send('emails.contact',$data,function ($message) use ($data){
              $message->from($data['email']);
              $message->to('santoshkhadka423@gmail.com');
              $message->subject('New Order Recived');
-            });
+            });*/
 
          $request->session()->flush();
         $request->session()->flash('success_message','Your order is successfully send');

@@ -170,11 +170,11 @@
                             </div>
                             <div class="form-group">
                                 <label for="licenceNumber">Vehicle Dropoff Address</label>
-                                <input type="text"  value="{{$newArray['dropoffAddress']}}" name="newdropoffAddress" class="form-control" id="newdropoffAddress">
+                                <input type="text"  value="{{$newArray['dropoffAddress']}}" name="newdropoffAddress" class="form-control" id="newdropoffAddress" disabled>
                             </div>
                             <div class="form-group">
                                 <label for="licenceNumber">Vehicle Return Address</label>
-                                <input type="text" value="{{$newArray['returnAddress']}}" name="newreturnAddress" class="form-control" id="newreturnAddress">
+                                <input type="text" value="{{$newArray['returnAddress']}}" name="newreturnAddress" class="form-control" id="newreturnAddress" disabled>
 
                             </div>
 
@@ -182,16 +182,16 @@
                                 <div class="row">
                                     <div class="col-md-6">
                                         <label for="to">From</label>
-                                        <input type="text"  value="{{$newArray['datepickerFrom']}}" name="newdatepickerFrom" class="form-control" id="newdatepickerFrom" placeholder="Enter From Date">
+                                        <input type="text"  value="{{$newArray['datepickerFrom']}}" name="newdatepickerFrom" class="form-control" id="newdatepickerFrom" placeholder="Enter From Date" disabled>
                                     </div>
 
                                     <div class="col-md-6">
                                         <label for="from">To</label>
-                                        <input type="text"   value="{{$newArray['datepickerTo']}}" name="newdatepickerTo" class="form-control" id="newdatepickerTo" placeholder="Enter To Date">
+                                        <input type="text"   value="{{$newArray['datepickerTo']}}" name="newdatepickerTo" class="form-control" id="newdatepickerTo" placeholder="Enter To Date" disabled>
                                     </div>
 
                                     <div class="col-md-12 modify-date-time">
-                                        <a style="text-decoration: none;color: #00adb5;" href="{{route('front.home')}}">MODIFY LOCATION/DATES</a>
+                                        <span id="modify" style="text-decoration: none;color: #00adb5;" href="">MODIFY LOCATION/DATES</span>
                                     </div>
 
 
@@ -299,9 +299,41 @@
     </section>
 @endsection
 @section('js')
+ <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAPI9DH02wprL-VPOZZkwAHNzCdRLLKzqY&libraries=places"></script>
+ <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+  <link rel="stylesheet" href="/resources/demos/style.css">
+  <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
     <script>
+        var placeSearch, autocomplete;
+        function initAutocomplete(el) {
+            autocomplete = new google.maps.places.Autocomplete(
+                (document.getElementById(el)),
+                {types: ['geocode']});
+        }
+          initAutocomplete('newreturnAddress');
+          initAutocomplete('newdropoffAddress');
+                  $( function() {
+            $( "#newdatepickerTo" ).datepicker({
+                dateFormat: 'yy-mm-dd',
+                dayNamesMin: ['S', 'M', 'T', 'W', 'T', 'F', 'S'],
+                minDate: "0d"
+            });
+             $( "#newdatepickerFrom" ).datepicker({
+                dateFormat: 'yy-mm-dd',
+                dayNamesMin: ['S', 'M', 'T', 'W', 'T', 'F', 'S'],
+                minDate: "0d"
+            });
+            });
 
             $(document).ready(function () {
+                $('#modify').on('click',function(e){
+                $('#newdropoffAddress').attr('disabled',false);
+                $('#newreturnAddress').attr('disabled',false);
+                $('#newdatepickerFrom').attr('disabled',false);
+                $('#newdatepickerTo').attr('disabled',false);
+           }); 
+          
 
                 var host = "{{request()->getSchemeAndHttpHost()}}";
                 $('#reserve-btn').click(function (e) {

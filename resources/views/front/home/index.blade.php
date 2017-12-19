@@ -179,7 +179,7 @@
                 @endif
             </fieldset>
             <fieldset>
-                <input id="datepickerFrom" value="{{old('datepickerFrom')}}" data-date-format="YYYY-MM-DD HH:mm:ss" class="datepickerFrom" name="datepickerFrom" type="text" tabindex="1"  placeholder="Choose From Date&Time">
+                <input id="datepickerFrom" value="{{old('datepickerFrom')}}" data-date-format="YYYY-MM-DD HH:mm:ss" class="datepickerFrom" name="datepickerFrom" type="text" tabindex="1"  placeholder="Choose From Date">
                 @if ($errors->has('datepickerFrom'))
                     <span class="help-block errorColor">
                         <strong>{{ $errors->first('datepickerFrom') }}</strong>
@@ -188,12 +188,18 @@
 
             </fieldset>
             <fieldset>
-                <input id="datepickerTo" value="{{old('datepickerTo')}}" data-date-format="YYYY-MM-DD HH:mm:ss" name="datepickerTo" type="text" tabindex="1"  placeholder="Choose To Date&Time">
+                <input id="datepickerTo" value="{{old('datepickerTo')}}" data-date-format="YYYY-MM-DD HH:mm:ss" name="datepickerTo" type="text" tabindex="1"  placeholder="Choose To Date">
                 @if ($errors->has('datepickerTo'))
                     <span class="help-block errorColor">
                         <strong>{{ $errors->first('datepickerTo') }}</strong>
                     </span>
                 @endif
+            </fieldset>
+            <fieldset>
+                <input type="checkbox" name="terms" id="terms" onchange="activateButton(this)"> I am 21 or older
+                <span id="terms-error" class="errorColor"></span>
+                <br>
+                <input type="checkbox" name="terms" id="location" onchange="activateButton(this)">Different return location
             </fieldset>
 
             <fieldset>
@@ -210,6 +216,11 @@
 @endsection
 @section('js')
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAPI9DH02wprL-VPOZZkwAHNzCdRLLKzqY&libraries=places"></script>
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+  <link rel="stylesheet" href="/resources/demos/style.css">
+  <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    
 
     <script>
         var placeSearch, autocomplete;
@@ -221,9 +232,39 @@
           initAutocomplete('pickUpAddress');
           initAutocomplete('dropoffAddress');
           $(document).ready(function () {
+          /*$('#datepickerTo').datetimepicker({  
+               minDate:new Date(),    
+            });
+            */
+           
+           $('#dropoffAddress').hide();
+           $('#location').on('click',function(e){
+                $('#dropoffAddress').toggle();
+           }); 
 
-          $('#datepickerFrom').datetimepicker();
-          $('#datepickerTo').datetimepicker();
+            var $form = $('#contact');
+            var $terms = $('#terms');
+            $form.on('submit', function(e) {
+                if(!$terms.is(':checked')) {
+                    $('#terms-error').text('Please accept terms and conditions');
+                     //alert('Please confirm!');
+                    e.preventDefault();
+                    }
+            
+                });
+
+           $( function() {
+            $( "#datepickerTo" ).datepicker({
+                dateFormat: 'yy-mm-dd',
+                dayNamesMin: ['S', 'M', 'T', 'W', 'T', 'F', 'S'],
+                minDate: "0d"
+            });
+             $( "#datepickerFrom" ).datepicker({
+                dateFormat: 'yy-mm-dd',
+                dayNamesMin: ['S', 'M', 'T', 'W', 'T', 'F', 'S'],
+                minDate: "0d"
+            });
+            });
 
 //            chooseDateAndTime('#datepickerFrom');
 //            chooseDateAndTime('#datepickerTo');
