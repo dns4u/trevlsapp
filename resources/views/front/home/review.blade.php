@@ -135,10 +135,13 @@
 
 
                                      <div class="container">
+            
+            <div class="row">
+            <div class="col-md-12">
             <h4>
                 4. Enter your details
             </h4>
-            <div class="row">
+            </div>
                 <div class="col-md-8">
                     <form action="{{route('front.product.userdetail.send',$newArray['row']['id'])}}" method="post">
                         {{csrf_field()}}
@@ -213,7 +216,7 @@
                         <button type="submit" id="reserve-btn" class="btn btn-default reserve-btn">RESERVE NOW</button>
                     </form>
                 </div>
-                <div class="col-md-4">
+                <!--<div class="col-md-4"> 
                     <div class="rebel-member">
                         <img class="img-responsive" src="{{asset('images/rebel/rebel-member.jpg')}}">
                         <h3>Are you a Rebel Member?</h3>
@@ -224,7 +227,7 @@
                         <button type="button" class="btn btn-default reserve-btn">ADD TO CART</button>
 
                     </div>
-                </div>
+                </div> -->
             </div>
 
         </div>
