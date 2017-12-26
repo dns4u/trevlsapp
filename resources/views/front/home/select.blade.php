@@ -28,8 +28,8 @@
                             <h3>{{$row->product_name}}</h3>
                             <div class="begin-detail">
                                 <div class="row detail-container">
-                                    <div class="col-md-6 detail-title"><strong>Reviews</strong> </div>
-                                    <div class="col-md-6 detail-list">{{$row->review}} trips <i class="fa fa-star" aria-hidden="true"></i></div>
+                                    <div class="col-md-5 detail-title"><strong>Reviews</strong> </div>
+                                    <div class="col-md-7 detail-list">{{$row->review}} trips <i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star" aria-hidden="true"></i></div>
                                 </div>
                                 <div class="row detail-container">
                                     <div class="col-md-6 detail-title"><strong>Passengers</strong> </div>
@@ -52,7 +52,7 @@
                                         <button type="button" class="btn btn-danger in-demand">in high demand - {{$row->stock}} in stock</button>
                                     </div>
                                     <div class="col-md-6 detail-list price-cross"> ${{$row->old_price_per_day}}/day</div>
-                                    <div class="col-md-12 detail-list price-fine">${{$row->new_price_per_day}}<sup>/day</sup></div>
+                                    <div class="col-md-12 detail-list price-fine"><sup>$</sup>{{$row->new_price_per_day}}<sup>/day</sup></div>
                                 </div>
 
                                 <div class="row reserve-btn">

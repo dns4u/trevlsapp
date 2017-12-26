@@ -241,11 +241,11 @@ class HomeController extends Controller
                     $data['row']['taxes_fees'] +  $insurance_personal_price + $insurance_roadside_price
 
             );
-           /*Mail::send('emails.contact',$data,function ($message) use ($data){
+           Mail::send('emails.contact',$data,function ($message) use ($data){
              $message->from($data['email']);
-             $message->to('santoshkhadka423@gmail.com');
+             $message->to('dinesh.regmi048@gmail.com');
              $message->subject('New Order Recived');
-            });*/
+            });
 
          $request->session()->flush();
         $request->session()->flash('success_message','Your order is successfully send');

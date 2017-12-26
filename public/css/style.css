@@ -1,0 +1,309 @@
+body {
+	font-family: 'Open Sans', sans-serif !important;
+	font-size: 14px;
+	font-weight:300;
+	margin:0;
+	padding:0;
+}
+
+.form-wrapper .form-container-main {
+	margin: 0;
+    padding: 0px;
+    float: left;
+    width: 100%;
+    background: url(../images/header-bg.jpg) repeat;
+    height: auto;
+    position: relative;
+}
+.form-container-main {
+	margin: 0px;
+    padding: 0px;
+    float: right;
+    width: 80.5%;
+	/*position:absolute;
+	top: 10%;
+    left: 50%;
+    transform: translate(-50%, 0%);
+	width:400px;
+	max-width:100%;*/
+}
+.form-container-main h1 {
+	color:#fff;
+	font-weight:300;
+	background:#00adb5;
+	padding:10px 20px;
+	margin:0;
+	text-transform:uppercase;
+}
+.text-container {
+	max-width:995px;
+	margin:0 auto;
+	padding:0;
+}
+
+.text-container h2 {
+	color:#444;
+	font-weight:300;
+	margin-top:0;
+	font-size:43px;
+}
+.text-container h2 b {
+	display:block;
+	font-size:32px;
+}
+.text-container h3 {
+	font-weight:300;
+	font-size:18px;
+	color:#999;
+}
+.enter-city {
+    margin: 0px;
+    padding: 0px;
+    float: left;
+    max-width: 387px;
+    min-height: 373px;
+    background: #fff;
+    position: absolute;
+    top: 18%;
+    left: 13.4%;
+    right: 0;
+    z-index: 998;
+    box-shadow: 0 -11px 20px 0 rgba(2, 62, 130, 0.3);
+}
+.right-img {
+	margin: 0px;
+    padding: 0px;
+    float: right;
+    width: 80.5%;
+}
+.right-img img {
+    width: 100%;
+}
+.enter-city-inner {
+	    margin: 0px;
+    padding: 0px;
+    float: left;
+    width: 100%;
+}
+.enter-city-inner h2 {
+	margin: 20px 0 20px 20px;
+	padding: 0px;
+	font-size: 30px;
+	color: #fff;
+	float: left;
+	width: 90%;
+}
+.enter-city-inner h2 input {
+	margin: 0px;
+	padding: 0px;
+	float: left;
+	width: 100%;
+	color: #999;
+	border: none;
+	font-size:24px !important;
+	font-weight:300 !important;
+}
+.enter-city-inner ul {
+	margin: 0px;
+	padding: 25px 0 0;
+	float: left;
+	width: 100%;
+	border-top: 1px solid #dddddd;
+	list-style-type: none
+}
+.enter-city-inner ul li {
+	margin: 0px;
+	padding: 0px;
+	float: left;
+	width: 49%;
+	text-align: center;
+	background: url(../images/arrow-black.jpg) no-repeat scroll right 8px bottom 0;
+	border-right: 1px solid #dddddd;
+}
+.enter-city-inner ul li:last-child {
+	border: none;
+	padding: 0px;
+}
+.enter-city-inner ul li h3 {
+	margin: 0px;
+	padding: 0px;
+	float: left;
+	width: 100%;
+	color: #2e333a;
+	font-size: 16px;
+	font-weight: 600;
+}
+.enter-city-inner ul li span {
+	margin: 0px;
+	padding: 0px;
+	float: left;
+	width: 100%;
+	font-size: 48px;
+	color: #00adb5;
+}
+.enter-city-inner ul li span sub {
+	margin: 0px;
+	padding: 0px;
+	font-size: 16px;
+}
+.enter-city-inner ul li span input {
+	margin: 0 0 0 33px;
+	padding: 0px;
+	border: none;
+	float: left;
+	width: 50%;
+	text-align: center;
+	height: 1px;
+	opacity: 0;
+}
+.reserve-part {
+	margin: 13px 0 0;
+	padding: 0px;
+	float: left;
+	width: 100%;
+	background: #f3f3f3;
+	height: 173px;
+}
+.reserve-part-left {
+	margin: 30px 0 0 20px;
+	padding: 0px;
+	float: left;
+	width: 175px;
+}
+.reserve-part-left span {
+	margin: 0 0 10px;
+	padding: 0px;
+	float: left;
+	width: 100%;
+	font-size: 13px;
+	color: #858585;
+	line-height: 17px;
+}
+.reserve-part-left b {
+	margin: 15px 0 0;
+	padding: 0px;
+	float: left;
+	width: 97%;
+}
+.reserve-part-left b a {
+	margin: 0 10px 0 0;
+	padding: 0px;
+	width: 150px;
+	height: 40px;
+	float: left;
+	text-align: center;
+	color: #FFFFFF;
+	text-decoration: none;
+	font-size: 15px;
+	line-height: 40px;
+	background: #00adb5;
+	text-transform: uppercase;
+	display: inline-table;
+}
+.reserve-part-left b a:hover {
+	background: #039aa1;
+}
+.reserve-part-right {
+	margin: 34px 0 0;
+	padding: 0px;
+	float: right;
+	width: 190px;
+}
+.checkbox-n {
+	margin: 2px 7px 0 0;
+	padding: 0px;
+	float: left;
+	width: 17px;
+	position: relative;
+}
+/* Code for Checbox Starts */
+.checkbox-n input[type="checkbox"] {
+	display: block;
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+}
+.checkbox-n input[type="checkbox"] + label {
+	color: #59c859;
+	font-family: Arial, sans-serif;
+	font-size: 14px;
+	font-weight: bold;
+}
+.checkbox-n input[type="checkbox"] + label::before {
+	display: inline-block;
+	width: 11px;
+	height: 10px;
+	margin: 0;
+	vertical-align: middle;
+	background: #f3f3f3;
+	cursor: pointer;
+	content: "";
+	padding: 2px;
+	border: 1px solid #b5b5b5;
+	position: relative;
+}
+.checkbox-n input[type="checkbox"]:checked + label::before {
+	content: "\2713";
+	color: #fff;
+	font-size: 16px;
+	font-weight: bold;
+	text-align: center;
+	line-height: 9px;
+	background: #00adb5;
+	border: 1px solid #00adb5;
+	padding: 2px;
+}
+/* Code for Checkbox ends */
+ 
+/* Code for radio buttons starts */
+.checkbox-n input[type="radio"] {
+	display: none;
+}
+.checkbox-n input[type="radio"] + label {
+	color: #59c859;
+	font-family: Arial, sans-serif;
+	font-size: 14px;
+	font-weight: bold;
+}
+.checkbox-n input[type="radio"] + label::before {
+	display: inline-block;
+	width: 15px;
+	height: 15px;
+	margin: -1px 4px 0 0;
+	vertical-align: middle;
+	background: #3C4B57;
+	border-radius: 10px;
+	cursor: pointer;
+	content: "";
+	box-shadow: inset 0px 2px 3px 0px rgba(34, 41, 122, 0.3), 0px 1px 0px 0px rgba(116, 123, 175, 0.8);
+}
+.checkbox-n input[type="radio"]:checked + label::before {
+	content: "\2022";
+	color: #59c859;
+	font-size: 30px;
+	text-align: center;
+	line-height: 15px;
+}
+/* Code for radio buttons Ends */
+.clear {
+	clear:both;
+}
+@media only screen and (max-width: 520px) {
+.datepicker {
+	left:150px !important;
+}
+.form-wrapper {
+	padding:0 15px;
+}
+.enter-city {
+    float: none;
+    max-width: 100%;
+    position:static !important;
+}
+.right-img {
+	float:none
+    width: 100%;
+}
+}

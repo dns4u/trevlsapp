@@ -213,10 +213,10 @@
                             </div>
                         </div>
 
-                        <button type="submit" id="reserve-btn" class="btn btn-default reserve-btn">RESERVE NOW</button>
+                        <button type="submit" id="reserve-btn" class="btn btn-default reserve-btn">RESERVE NOW</button><div style="color:blue;margin-left:30px;">Reserve Now,Pay Later</div>
                     </form>
                 </div>
-                <!--<div class="col-md-4"> 
+                --<div class="col-md-4"> 
                     <div class="rebel-member">
                         <img class="img-responsive" src="{{asset('images/rebel/rebel-member.jpg')}}">
                         <h3>Are you a Rebel Member?</h3>
@@ -227,7 +227,7 @@
                         <button type="button" class="btn btn-default reserve-btn">ADD TO CART</button>
 
                     </div>
-                </div> -->
+                </div> 
             </div>
 
         </div>
