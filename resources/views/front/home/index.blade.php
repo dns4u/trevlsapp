@@ -4,7 +4,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <title>Trevls Tesla Car Rental</title>
-
+<style type="text/css">@import url(https://fonts.googleapis.com/css?family=Roboto:400,300,600,400italic);</style>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <link href="{{ asset('css/style.css') }}" rel="stylesheet" type="text/css">
 <link href="{{ asset('css/bootstrap-datepicker3.css') }}" rel="stylesheet" type="text/css">
@@ -22,24 +22,24 @@
 <div class="form-container-main">
 <div class="enter-city">
   <div class="enter-city-inner">
-    <form name="frmhomesearch" id="frmhomesearch" method="post" action="#">
+    <form name="frmhomesearch" id="frmhomesearch" action="{{route('front.product.store')}}" method="post">
+    {{csrf_field()}}
       <h1>Reserve Vehicle</h1>
       <input type="hidden" name="search" value="Home">
       <h2>
-        <input name="From" id="From" type="text" value="Minneapolis, MN, United States" placeholder="Enter city or airport..." class="validate[required] span3 from autocompleted" tabindex="1" required="" autocomplete="off">
+        <input name="dropoffAddress" id="dropoffAddress" type="text" value="{{old('dropoffAddress')}}" placeholder="Minneapolis, MN, United States" class="validate[required] span3 from autocompleted" tabindex="1" required="" autocomplete="off">
       </h2>
       <ul>
         <li>
-          <h3>DROPOFF</h3>
-          <span>
+          <h3>DROPOFF</h3>          <span>
           <div id="datechange">DAY<sub>MONTH</sub></div>
-          <input name="searchdate" id="searchdate" type="text" tabindex="3" class="validate[required] datepicker span2 hasDatepicker" value="" placeholder="Pickup Date" readonly="readonly">
+          <input name="datepickerFrom" id="searchdate" type="text" tabindex="3" class="validate[required] datepicker span2 hasDatepicker" value="{{old('datepickerFrom')}}" placeholder="Pickup Date" readonly="readonly">
           </span> </li>
         <li>
           <h3>RETURN</h3>
           <span>
           <div id="datechange2">DAY<sub>MONTH</sub> </div>
-          <input name="searchdate2" id="searchdate2" type="text" tabindex="3" class="validate[required] datepicker span2 hasDatepicker" value="" placeholder="Return date" readonly="readonly">
+          <input name="datepickerTo" id="searchdate2" type="text" tabindex="3" class="validate[required] datepicker span2 hasDatepicker" value="{{old('datepickerTo')}}" placeholder="Return date" readonly="readonly">
           </span> </li>
       </ul>
       <div class="reserve-part">
@@ -53,7 +53,8 @@
             <input id="c2" name="cc2" type="checkbox">
             <label for="c2"></label>
           </div>
-          Different return location</span> <b><a href="#">CHOOSE VEHICLE</a></b> </div>
+          Different return location</span> <button  type="submit" id="chooseSubmit"  data-submit="...Sending">Choose Vehicle</button></div>
+
         <div class="reserve-part-right"> <img src="{{asset('images/reserve-part-right-img.jpg')}}" alt=""> </div>
       </div>
     </form>
@@ -66,7 +67,15 @@
 </div>
 </body>
 </html>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAPI9DH02wprL-VPOZZkwAHNzCdRLLKzqY&libraries=places"></script>
 <script>
+var placeSearch, autocomplete;
+        function initAutocomplete(el) {
+            autocomplete = new google.maps.places.Autocomplete(
+                (document.getElementById(el)),
+                {types: ['geocode']});
+        }
+          initAutocomplete('dropoffAddress');
   
 	$(document).ready(function(){
 		
