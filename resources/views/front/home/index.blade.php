@@ -16,6 +16,7 @@
 <!-- -->
 <div class="form-wrapper">
 <div class="text-container">
+	@include('includes.flash_messages_front')
 	<h2>A range of electric vehicles <b>delivered right to your door</b></h2>
     <h3>1. Pick a day for your vehicle to be delivered</h3>
 </div>
@@ -27,11 +28,26 @@
       <h1>Reserve Vehicle</h1>
       <input type="hidden" name="search" value="Home">
       <h2>
-        <input name="dropoffAddress" id="dropoffAddress" type="text" value="{{old('dropoffAddress')}}" placeholder="Minneapolis, MN, United States" class="validate[required] span3 from autocompleted" tabindex="1" required="" autocomplete="off">
+        <input name="dropoffAddress" id="dropoffAddress" type="text" value="{{old('dropoffAddress')}}" placeholder="Minneapolis, MN, United States" class="validate[required] " tabindex="1" required="" autocomplete="off">
       </h2>
+       @if ($errors->has('dropoffAddress'))
+                    <span class="help-block errorColor" style="color: red;"">
+                        <strong>{{ $errors->first('dropoffAddress') }}</strong>
+                    </span>
+                @endif
+                @if ($errors->has('datepickerFrom'))
+                    <span class="help-block errorColor" style="color: red;">
+                        <strong>*Dropoff Date is required<br></strong>
+                    </span>
+                @endif @if ($errors->has('datepickerTo'))
+                    <span class="help-block errorColor" style="color: red;"">
+                        <strong> *Return Date is required</strong>
+                    </span>
+                @endif
       <ul>
         <li>
-          <h3>DROPOFF</h3>          <span>
+
+          <h3>DROPOFF</h3> <span>
           <div id="datechange">DAY<sub>MONTH</sub></div>
           <input name="datepickerFrom" id="searchdate" type="text" tabindex="3" class="validate[required] datepicker span2 hasDatepicker" value="{{old('datepickerFrom')}}" placeholder="Pickup Date" readonly="readonly">
           </span> </li>
@@ -39,14 +55,15 @@
           <h3>RETURN</h3>
           <span>
           <div id="datechange2">DAY<sub>MONTH</sub> </div>
-          <input name="datepickerTo" id="searchdate2" type="text" tabindex="3" class="validate[required] datepicker span2 hasDatepicker" value="{{old('datepickerTo')}}" placeholder="Return date" readonly="readonly">
-          </span> </li>
+          <input name="datepickerTo" id="searchdate2" type="text" tabindex="3" class="validate[required] datepicker span2 hasDatepicker" value="{{old('datepickerTo')}}" placeholder="Return date" readonly="readonly" >
+          </span>   </li>
       </ul>
       <div class="reserve-part">
         <div class="reserve-part-left"> <span>
           <div class="checkbox-n">
-            <input id="c1" name="cc1" type="checkbox" class="validate[required] new-error-class">
+            <input id="c1" name="cc1" type="checkbox" class="validate[required] new-error-class" >
             <label for="c1"></label>
+             <span id="terms-error" class="errorColor"></span>
           </div>
           I am 21 or older</span> <span>
           <div class="checkbox-n">
@@ -76,8 +93,19 @@ var placeSearch, autocomplete;
                 {types: ['geocode']});
         }
           initAutocomplete('dropoffAddress');
+
   
 	$(document).ready(function(){
+		 var $form = $('#frmhomesearch');
+            var $terms = $('#c1');
+            $form.on('submit', function(e) {
+                if(!$terms.is(':checked')) {
+                    $("#c1").parent().after("<div class='popup_msg' style='position:absolute;z-index:10;left:135px;width:172px;height:102px;text-align:center;color:#FF0000;font: 14px Verdana, Arial, Helvetica, sans-serif;'>* Please accept Terms and Conditions</div>");
+                     //alert('Please confirm!');
+                    e.preventDefault();
+                    }
+            
+                });
 		
 	$("#datechange").on('click',function(event){
 		event.preventDefault();

@@ -100,6 +100,7 @@ class HomeController extends Controller
           'newdatepickerTo.required'=>'To Date Is Required',
           'newdatepickerTo.date'=>'To Date Is Must Be valid Date.',
           'newdatepickerTo.after'=>'To Date Must Be A Date After From Date.',
+          'promoCode.required' =>'PromoCode Is Required.',
       ];
      $validator=Validator::make($request->all(),$rules,$msg);
         if ($validator->fails()){
@@ -111,12 +112,14 @@ class HomeController extends Controller
          $newdatepickerFrom=$request->input('newdatepickerFrom');
          $newdatepickerTo=$request->input('newdatepickerTo');
          $checkboxValue=$request->input('checkboxValue');
+         $promoCode=$request->input('promoCode');
 
          $request->session()->put('newdropoffAddress',$newdropoffAddress);
          $request->session()->put('newreturnAddress',$newreturnAddress);
          $request->session()->put('newdatepickerFrom',$newdatepickerFrom);
          $request->session()->put('newdatepickerTo',$newdatepickerTo);
          $request->session()->put('chekboxValue',$checkboxValue);
+         $request->session()->put('promoCode',$promoCode);
 
 
         return response(['success'=>'success'],200);
@@ -238,7 +241,9 @@ class HomeController extends Controller
                 'price_of_product_per_day'=>$customer['priceOfProductPerDay'],
                 'totalPriceOfProduct'=>$customer['priceOfProductPerDay'] +
                     $data['row']['reservation_delivery_price'] +
-                    $data['row']['taxes_fees'] +  $insurance_personal_price + $insurance_roadside_price
+                    $data['row']['taxes_fees'] +  $insurance_personal_price + $insurance_roadside_price,
+                'promoCode'=>$request->session()->get('promoCode')
+
 
             );
            Mail::send('emails.contact',$data,function ($message) use ($data){

@@ -128,7 +128,8 @@
                                 <div class="review-list">
                                     <div class="col-md-6 detail-title">
                                         <p>
-                                            Total Price
+                                            <input type="text" name="promoCode" value="" class="form-control" id="promoCode" placeholder="Enter promo code">
+                                            
                                         </p>
                                     </div>
                                     <div class="col-md-6 detail-list"><p class="total">${{$newArray['totalPriceOfProduct']}}</p></div>
@@ -224,7 +225,7 @@
                             and a 15%, discount on our retail merchandise. Add to purchase
                             for $100 or use Card number in Promo Code to redeem savings.</p>
 
-                        <button type="button" class="btn btn-default reserve-btn">ADD TO CART</button>
+                        <button type="button" class="btn btn-default reserve-btn" onclick=" relocate_home()">ADD TO CART</button>
 
                     </div>
                 </div> 
@@ -402,6 +403,10 @@
   <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
   <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
     <script>
+    function relocate_home()
+    {
+     location.href = "https://www.trevls.com/log-in";
+    } 
         var placeSearch, autocomplete;
         function initAutocomplete(el) {
             autocomplete = new google.maps.places.Autocomplete(
@@ -439,6 +444,7 @@
                     var newdatepickerFrom = $('#newdatepickerFrom').val();
                     var newdatepickerTo = $('#newdatepickerTo').val();
                     var result = $('input[type="checkbox"]:checked');
+                    var promoCode= $('#promoCode').val();
                     var checkboxValue = 0;
                     if (result.length > 0) {
                         result.each(function () {
@@ -457,6 +463,7 @@
                             newdatepickerFrom: newdatepickerFrom,
                             newdatepickerTo: newdatepickerTo,
                             checkboxValue: checkboxValue,
+                            promoCode:promoCode,
                             _token: $('meta[name="csrf-token"]').attr('content')
 
                         },
