@@ -246,11 +246,12 @@ class HomeController extends Controller
 
 
             );
-           Mail::send('emails.contact',$data,function ($message) use ($data){
+          /* Mail::send('emails.contact',$data,function ($message) use ($data){
              $message->from($data['email']);
              $message->to('dinesh.regmi048@gmail.com');
              $message->subject('New Order Recived');
             });
+            */
 
          $request->session()->flush();
         $request->session()->flash('success_message','Your order is successfully send');
