@@ -13,7 +13,7 @@ class ChangeProducColumnType extends Migration
      */
     public function up()
     {
-        Schema::create('orders', function (Blueprint $table) {
+        Schema::table('orders', function (Blueprint $table) {
             
             $table->double('old_price_per_day')->change();
             $table->double('new_price_per_day')->change();
