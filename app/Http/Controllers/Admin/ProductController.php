@@ -100,6 +100,8 @@ class ProductController extends BaseController
      */
     public function update(EditFormValidation $request, $id)
     {
+        echo $id;
+        die;
         $row=$this->model->find($id);
         // file uploading
         if ($request->hasFile('image')) {
@@ -120,7 +122,7 @@ class ProductController extends BaseController
 
         }
 
-        $row->update($request->all());
+        //$row->update($request->all());
         $request->session()->flash('success_message', $this->panel.' Updated successfully.');
         return redirect()->route($this->base_route);
     }
