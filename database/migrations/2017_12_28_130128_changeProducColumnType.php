@@ -15,14 +15,14 @@ class ChangeProducColumnType extends Migration
     {
         Schema::table('orders', function (Blueprint $table) {
             
-            $table->double('old_price_per_day')->change();
-            $table->double('new_price_per_day')->change();
-            $table->double('reservation_delivery_price')->change();
-            $table->double('discount_rate')->change();
-            $table->double('taxes_fees')->change();
-            $table->double('insurance_personal')->nullable()->change();
-            $table->double('insurance_roadside')->nullable()->change();
-            $table->double('total')->change();
+            $table->unsignedDecimal('old_price_per_day')->change();
+            $table->unsignedDecimal('new_price_per_day')->change();
+            $table->unsignedDecimal('reservation_delivery_price')->change();
+            $table->unsignedDecimal('discount_rate')->change();
+            $table->unsignedDecimal('taxes_fees')->change();
+            $table->unsignedDecimal('insurance_personal')->nullable()->change();
+            $table->unsignedDecimal('insurance_roadside')->nullable()->change();
+            $table->unsignedDecimal('total')->change();
         });
     }
 
