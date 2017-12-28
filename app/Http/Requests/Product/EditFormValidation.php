@@ -28,7 +28,7 @@ class EditFormValidation extends FormRequest
     {
 
         return [
-            'product_name'=>'required|string|unique:products,id,'. request()->get('id'),
+            'product_name'=>'required|string'
             'passenger_seat'=>'required|numeric',
             'vehicle_class'=>'required|string',
             'vehicle_mileage'=>'required|string',

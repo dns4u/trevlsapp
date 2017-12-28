@@ -98,8 +98,10 @@ class ProductController extends BaseController
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update($request, $id)
+    public function update(EditFormValidation $request, $id)
     {
+        echo $id;
+        die;
         $row=$this->model->find($id);
         // file uploading
         if ($request->hasFile('image')) {
