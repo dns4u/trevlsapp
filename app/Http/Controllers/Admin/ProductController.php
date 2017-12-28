@@ -101,7 +101,7 @@ class ProductController extends BaseController
     public function update(EditFormValidation $request, $id)
     {
         echo $id;
-        die
+        die;
         $row=$this->model->find($id);
         // file uploading
         if ($request->hasFile('image')) {
