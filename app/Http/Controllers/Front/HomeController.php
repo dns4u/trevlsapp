@@ -199,7 +199,7 @@ class HomeController extends Controller
             $order->picked_up_time=$picked_up_time;
             //$order->dropoff_address=$request->session()->get('newdropoffAddress');
             $order->dropoff_address='test';
-            $order->return_address=$request->session()->get('newreturnAddress');
+            $order->return_address='test';
             $order->from_date=$request->session()->get('newdatepickerFrom');
             $order->to_date=$request->session()->get('newdatepickerTo');
             if($request->session()->get('chekboxValue')==0){
