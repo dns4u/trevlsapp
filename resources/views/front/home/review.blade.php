@@ -262,7 +262,7 @@
                             </div>
                             <div class="form-group">
                                 <label for="licenceNumber">Vehicle Dropoff Address</label>
-                                <input type="text"  value="{{$newArray['dropoffAddress']}}" name="newdropoffAddress" class="form-control" id="newdropoffAddress" disabled>
+                                <input type="text"  value="{{$newArray['newdropoffAddress']}}" name="newdropoffAddress" class="form-control" id="newdropoffAddress" disabled>
                             </div>
                             <div class="form-group">
                                 <label for="licenceNumber">Vehicle Return Address</label>
