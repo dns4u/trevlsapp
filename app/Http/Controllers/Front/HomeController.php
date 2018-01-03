@@ -66,6 +66,8 @@ class HomeController extends Controller
 
               $data=[];
               $data['row']=Product::find($id)->toArray();
+               
+
               $customer['dropoffAddress']=$request->session()->get('dropoffAddress');
               $customer['returnAddress']=$request->session()->get('returnAddress');
               $customer['datepickerFrom']=$request->session()->get('datepickerFrom');
@@ -77,6 +79,12 @@ class HomeController extends Controller
               $substrToTime=substr($request->session()->get('datepickerTo'),11);
               $days=$this->dateDiff($substrFromDate,$substrToDate);
               $customer['days']=$days;
+              if($data['row']['vehicle_class']=='e-Begin')
+                $customer['tax']=$days*32.15;
+              if($data['row']['vehicle_class']=='e-Full')
+                $customer['tax']=$days*38.75;
+              if($data['row']['vehicle_class']=='e-Premium')
+                $customer['tax']=$days*57.70;
               $customer['priceOfProductPerDay']=$customer['days'] * $data['row']['new_price_per_day'];
               $customer['totalPriceOfProduct']=$customer['priceOfProductPerDay'] + $data['row']['reservation_delivery_price'] + $data['row']['taxes_fees'];
               $newArray=array_merge($data,$customer);

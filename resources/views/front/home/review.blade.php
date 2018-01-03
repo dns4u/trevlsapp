@@ -114,7 +114,7 @@
                             <div class="row">
                                 <div class="review-list">
                                     <div class="col-md-6 detail-title"><p>Total Tax </p> </div>
-                                    <div class="col-md-6 detail-list"><p>{{$newArray['row']['taxes_fees']}}</p></div>
+                                    <div class="col-md-6 detail-list"><p>{{$newArray['tax']}}</p></div>
                                 </div>
                             </div>
                         </div>
@@ -126,12 +126,7 @@
 
                             <div class="row">
                                 <div class="review-list">
-                                    <div class="col-md-6 detail-title">
-                                        <p>
-                                            <input type="text" name="promoCode" value="" class="form-control" id="promoCode" placeholder="Enter promo code">
-                                            
-                                        </p>
-                                    </div>
+                                  
                                     <div class="col-md-6 detail-list"><p class="total">${{$newArray['totalPriceOfProduct']}}</p></div>
 
 
@@ -148,7 +143,7 @@
                         {{csrf_field()}}
                         <div class="heading-driver">
                             <div class="row">
-                                <div class="col-md-12"><h3>Passenger Information</h3></div>
+                                <div class="col-md-12"><h3>Driver Information</h3></div>
                                 <div class="col-md-3"><h4></h4>
                                 </div>
                             </div>
@@ -202,7 +197,7 @@
 
                         <div class="form-group">
                             <div class="row">
-                                <div class="col-md-12">
+                                <div class="col-md-6">
                                     <label for="address">Address</label>
                                     <input type="text" name="address" value="{{ old('address') }}" class="form-control" id="address">
                                     @if ($errors->has('address'))
@@ -211,24 +206,23 @@
                                     </span>
                                     @endif
                                 </div>
+                           
+                             <div class="col-md-6">
+                                    <label for="address">Picked Up Time</label>
+                                    <input type="text" name="picked_up_time" value="{{ old('picked_up_time') }}" class="form-control" id="picked_up_time">
+                                    @if ($errors->has('address'))
+                                        <span class="help-block errorColor">
+                                        <strong>{{ $errors->first('picked_up_time') }}</strong>
+                                    </span>
+                                    @endif
                             </div>
+                        </div>
                         </div>
 
                         <button type="submit" id="reserve-btn" class="btn btn-default reserve-btn">RESERVE NOW</button><div style="color:blue;margin-left:30px;">Reserve Now,Pay Later</div>
                     </form>
                 </div>
-                --<div class="col-md-4"> 
-                    <div class="rebel-member">
-                        <img class="img-responsive" src="{{asset('images/rebel/rebel-member.jpg')}}">
-                        <h3>Are you a Rebel Member?</h3>
-                        <p>Join the exclusive loyalty membership card that offers 10% off all resevations for an entire year
-                            and a 15%, discount on our retail merchandise. Add to purchase
-                            for $100 or use Card number in Promo Code to redeem savings.</p>
-
-                        <button type="button" class="btn btn-default reserve-btn" onclick=" relocate_home()">ADD TO CART</button>
-
-                    </div>
-                </div> 
+           
             </div>
 
         </div>
@@ -280,12 +274,12 @@
                                 <div class="row">
                                     <div class="col-md-6">
                                         <label for="to">From</label>
-                                        <input type="text"  value="{{$newArray['datepickerFrom']}}" name="newdatepickerFrom" class="form-control" id="newdatepickerFrom" placeholder="Enter From Date" disabled>
+                                        <input type="text"  value="{{date('d/M/Y',strtotime($newArray['datepickerFrom']))}}" name="newdatepickerFrom" class="form-control" id="newdatepickerFrom" placeholder="Enter From Date" disabled>
                                     </div>
 
                                     <div class="col-md-6">
                                         <label for="from">To</label>
-                                        <input type="text"   value="{{$newArray['datepickerTo']}}" name="newdatepickerTo" class="form-control" id="newdatepickerTo" placeholder="Enter To Date" disabled>
+                                        <input type="text"   value="{{date('d/M/Y',strtotime($newArray['datepickerTo']))}}" name="newdatepickerTo" class="form-control" id="newdatepickerTo" placeholder="Enter To Date" disabled>
                                     </div>
 
                                     <div class="col-md-12 modify-date-time">
