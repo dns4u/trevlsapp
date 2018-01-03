@@ -196,11 +196,11 @@ class HomeController extends Controller
             $order->email=$email;
             $order->phone=$phoneNumber;
             $order->address=$address;
-            $order->picked_up_time=date('Y-m-d',strtotime($picked_up_time));
+            $order->picked_up_time=date($picked_up_time;
             $order->dropoff_address=$request->session()->get('newdropoffAddress');
             $order->return_address=$request->session()->get('newreturnAddress');
-            $order->from_date=$request->session()->get('newdatepickerFrom');
-            $order->to_date=$request->session()->get('newdatepickerTo');
+            $order->from_date=date('Y-m-d',strtotime($request->session()->get('newdatepickerFrom')));
+            $order->to_date=date('Y-m-d',strtotime($request->session()->get('newdatepickerTo')));
             if($request->session()->get('chekboxValue')==0){
                 //no no thing
             }else{
