@@ -115,9 +115,7 @@ class HomeController extends Controller
             return response($validator->errors(),422);
 
         }
-         $newdropoffAddress = $request->input( 'newdropoffAddress' );
-         echo $newdropoffAddress;
-            die;
+         $newdropoffAddress = $request->input('newdropoffAddress');
          $newreturnAddress=$request->input('newreturnAddress');
          $newdatepickerFrom=$request->input('newdatepickerFrom');
          $newdatepickerTo=$request->input('newdatepickerTo');
