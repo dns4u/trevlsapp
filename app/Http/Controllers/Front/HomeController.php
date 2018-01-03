@@ -38,8 +38,6 @@ class HomeController extends Controller
     public function store(ChooseVehicleValidation $request)
     {
             $dropoffAddress=$request->get('dropoffAddress');
-            echo $dropoffAddress;
-            die;
             $returnAddress=$request->get('returnAddress')?$request->get('returnAddress'):$request->get('dropoffAddress');
             $datepickFrom=$request->get('datepickerFrom');
             $datepickerTo=$request->get('datepickerTo');
