@@ -116,6 +116,8 @@ class HomeController extends Controller
 
         }
          $newdropoffAddress = $request->input( 'newdropoffAddress' );
+         echo $newdropoffAddress;
+            die;
          $newreturnAddress=$request->input('newreturnAddress');
          $newdatepickerFrom=$request->input('newdatepickerFrom');
          $newdatepickerTo=$request->input('newdatepickerTo');
@@ -198,8 +200,7 @@ class HomeController extends Controller
             $order->address=$address;
             $order->picked_up_time=$picked_up_time;
             $order->dropoff_address=$request->session()->get('newdropoffAddress');
-            echo $order->dropoff_address;
-            die;
+            
             $order->return_address=$request->session()->get('newreturnAddress');
             $order->from_date=$request->session()->get('newdatepickerFrom');
             $order->to_date=$request->session()->get('newdatepickerTo');
