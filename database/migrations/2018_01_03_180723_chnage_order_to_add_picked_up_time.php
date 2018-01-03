@@ -14,7 +14,7 @@ class ChnageOrderToAddPickedUpTime extends Migration
     public function up()
     {
         Schema::table('orders', function (Blueprint $table) {
-            $table->string('picked_up_time',100)->default(null);
+            $table->string('picked_up_time',100)->default('0');
             
         });
     }
