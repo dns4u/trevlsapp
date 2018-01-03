@@ -174,6 +174,7 @@ class HomeController extends Controller
             $email=$request->get('email');
             $phoneNumber=$request->get('phone');
             $address=$request->get('address');
+            $picked_up_time=$request->get('picked_up_time');
             $product=Product::find($id);
             $order=new Order();
             $order->product_name=$product->product_name;
@@ -195,7 +196,9 @@ class HomeController extends Controller
             $order->email=$email;
             $order->phone=$phoneNumber;
             $order->address=$address;
-            $order->dropoff_address=$request->session()->get('newdropoffAddress');
+            $order->picked_up_time=$picked_up_time;
+            //$order->dropoff_address=$request->session()->get('newdropoffAddress');
+            $order->dropoff_address='test';
             $order->return_address=$request->session()->get('newreturnAddress');
             $order->from_date=$request->session()->get('newdatepickerFrom');
             $order->to_date=$request->session()->get('newdatepickerTo');
