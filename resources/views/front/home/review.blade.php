@@ -127,7 +127,7 @@
                             <div class="row">
                                 <div class="review-list">
                                   
-                                    <div class="col-md-6 detail-list"><p class="total">${{$newArray['totalPriceOfProduct']}}</p></div>
+                                    <div class="col-md-13 detail-list"><p class="total">${{$newArray['totalPriceOfProduct']}}</p></div>
 
 
                                      <div class="container">
