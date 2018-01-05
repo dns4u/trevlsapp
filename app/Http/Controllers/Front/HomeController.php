@@ -197,10 +197,13 @@ class HomeController extends Controller
             $order->phone=$phoneNumber;
             $order->address=$address;
             $order->picked_up_time=$picked_up_time;
-            $order->dropoff_address=$request->session()->get('newdropoffAddress');
-            $order->return_address=$request->session()->get('newreturnAddress');
-            $order->from_date=date('Y-m-d',strtotime($request->session()->get('newdatepickerFrom')));
-            $order->to_date=date('Y-m-d',strtotime($request->session()->get('newdatepickerTo')));
+            $order->dropoff_address=$request->session()->get('newdropoffAddress')?$request->session()->get('newdropoffAddress'):$request->session()->get('dropoffAddress');
+            $order->return_address=$request->session()->get('newreturnAddress')?$request->session()->get('newreturnAddress'):$request->session()->get('returnAddress');
+           $order->from_date=$request->session()->get('newdatepickerFrom')?session()->get('newdatepickerFrom'):session()->get('datepickerFrom');
+            $order->to_date=$request->session()->get('newdatepickerTo')?$request->session()->get('newdatepickerTo'):$request->session()->get('datepickerTo');
+            
+            // $order->from_date='2017-03-01';
+            //$order->to_date='2018-03-05';
             if($request->session()->get('chekboxValue')==0){
                 //no no thing
             }else{
