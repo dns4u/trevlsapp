@@ -443,7 +443,11 @@
                     var price_per_day=$("#price_per_day").html();
                     if(vechicle_class=='e-Begin')
                        $("#total_tax p").text(days*32.15);
-                        $("#total_price p").text(days*price_per_day);
+                    else if(vechicle_class=='e-Full')
+                       $("#total_tax p").text((days*38.75));
+                   else
+                       $("#total_tax p").text((days*57.70));
+                   $("#total_price p").text(days*price_per_day);
                    // alert(price_per_day);
 
             }
