@@ -26,7 +26,7 @@ class ChooseVehicleValidation extends FormRequest
         return [
             'dropoffAddress'=>'required|string',
             'datepickerFrom'=>'required|date|before:datepickerTo|after:today',
-            'datepickerTo'=>'required|date|after:datepickerFrom'
+            'datepickerTo'=>'required|date'
         ];
     }
     public function messages()
