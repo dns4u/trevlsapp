@@ -15,6 +15,7 @@ use Illuminate\Support\Facades\Validator;
 
 class HomeController extends Controller
 {
+    protected $returndate;
 
     /**
      * Display a listing of the resource.
@@ -94,8 +95,8 @@ class HomeController extends Controller
       $rules=[
           'newdropoffAddress'=>'required|string',
           'newreturnAddress'=>'required|string',
-          'newdatepickerFrom'=>'required|date|before:newdatepickerTo',
-          'newdatepickerTo'=>'required|date|after:newdatepickerFrom',
+          'newdatepickerFrom'=>'required',
+          'newdatepickerTo'=>'required',
       ];
       $msg=[
           'newdropoffAddress.required'=>'Dropoff Address Is Required.',
@@ -117,17 +118,17 @@ class HomeController extends Controller
         }
          $newdropoffAddress = $request->input( 'newdropoffAddress' );
          $newreturnAddress=$request->input('newreturnAddress');
-         $newdatepickerFrom=$request->input('newdatepickerFrom');
-         $newdatepickerTo=$request->input('newdatepickerTo');
+         $newdatepickerFrom=date('Y-m-d', strtotime(str_replace('/', '-', $request->input('newdatepickerFrom'))));
+         $newdatepickerTo=date('Y-m-d', strtotime(str_replace('/', '-', $request->input('newdatepickerTo'))));
          $checkboxValue=$request->input('checkboxValue');
-         $promoCode=$request->input('promoCode');
+         //$promoCode=$request->input('promoCode');
 
          $request->session()->put('newdropoffAddress',$newdropoffAddress);
          $request->session()->put('newreturnAddress',$newreturnAddress);
          $request->session()->put('newdatepickerFrom',$newdatepickerFrom);
          $request->session()->put('newdatepickerTo',$newdatepickerTo);
          $request->session()->put('chekboxValue',$checkboxValue);
-         $request->session()->put('promoCode',$promoCode);
+        // $request->session()->put('promoCode',$promoCode);
 
 
         return response(['success'=>'success'],200);
@@ -156,9 +157,6 @@ class HomeController extends Controller
             $customer['newreturnAddress']=$request->session()->get('newreturnAddress');
             $customer['newdatepickerFrom']=$request->session()->get('newdatepickerFrom');
             $customer['newdatepickerTo']=$request->session()->get('newdatepickerTo');
-
-
-
             $substrFromDate=substr($request->session()->get('newdatepickerFrom'),0,10);
             $substrFromTime=substr($request->session()->get('newdatepickerFrom'),11);
             $substrToDate=substr($request->session()->get('newdatepickerTo'),0,10);
@@ -188,7 +186,7 @@ class HomeController extends Controller
             $order->new_price_per_day=$product->new_price_per_day;
             $order->reservation_delivery_price=$product->reservation_delivery_price;
             $order->discount_rate=$product->discount_rate;
-            $order->taxes_fees=$product->taxes_fees;
+            $order->taxes_fees=$product->taxes_fees*$days;
             $order->description=$product->description;
             $order->product_image=$product->product_image;
             $order->first_name=$first_name;

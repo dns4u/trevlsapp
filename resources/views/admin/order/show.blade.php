@@ -79,12 +79,12 @@
                                         </tr>
                                         <tr>
                                             <th>From date</th>
-                                            <td>{{ $data['row']->from_date}}</td>
+                                            <td>{{date('d/M/Y',strtotime($data['row']->from_date))}}</td>
                                         </tr>
                                         <tr>
                                             <th>To date</th>
-                                            <td>{{ $data['row']->to_date}}</td>
-                                        </tr>
+                                            <td>{{date('d/M/Y',strtotime($data['row']->to_date))}}</td>
+                                        </tr>(
 
                                         <tr>
                                             <th>Dropoff Address</th>

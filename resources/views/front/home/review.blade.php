@@ -470,7 +470,7 @@
                     var newdatepickerFrom = $('#newdatepickerFrom').val();
                     var newdatepickerTo = $('#newdatepickerTo').val();
                     var result = $('input[type="checkbox"]:checked');
-                    var promoCode= $('#promoCode').val();
+                   // var promoCode= $('#promoCode').val();
                     var checkboxValue = 0;
                     if (result.length > 0) {
                         result.each(function () {
@@ -489,11 +489,18 @@
                             newdatepickerFrom: newdatepickerFrom,
                             newdatepickerTo: newdatepickerTo,
                             checkboxValue: checkboxValue,
-                            promoCode:promoCode,
-                            _token: $('meta[name="csrf-token"]').attr('content')
+                           // promoCode:promoCode,
+                           _token: $('meta[name="csrf-token"]').attr('content')
 
                         },
                         dataType: 'json',
+                        success: function(response){                    
+            //alert(response);
+        },
+        error: function(rXMLHttpRequest, textStatus, errorThrown){                    
+            //$("#responsecontainer").html(response); 
+            //alert("Status: " + textStatus); alert("Error: " + errorThrown); 
+        }
                     });
 
                 });
