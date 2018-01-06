@@ -49,8 +49,8 @@
 
                             <div class="row">
                                 <div class="review-list">
-                                    <div class="col-md-6 detail-title"><p>{{$newArray['row']['vehicle_class']}}<br>For {{$newArray['days']}} day(s) ${{$newArray['row']['new_price_per_day']}} / day</p> </div>
-                                    <div class="col-md-6 detail-list"><p>{{$newArray['priceOfProductPerDay']}}</p></div>
+                                    <div class="col-md-6 detail-title"><p><div id="vechicle_class">{{$newArray['row']['vehicle_class']}}</div><br>For {{$newArray['days']}} day(s) $<span id="price_per_day">{{$newArray['row']['new_price_per_day']}}</span> / day</p> </div>
+                                    <div class="col-md-6 detail-list" id="total_price"><p>{{$newArray['priceOfProductPerDay']}}</p></div>
                                 </div>
                             </div>
                         </div>
@@ -114,7 +114,7 @@
                             <div class="row">
                                 <div class="review-list">
                                     <div class="col-md-6 detail-title"><p>Total Tax </p> </div>
-                                    <div class="col-md-6 detail-list"><p>{{$newArray['tax']}}</p></div>
+                                    <div class="col-md-6 detail-list" id="total_tax"><p>{{$newArray['tax']}}</p></div>
                                 </div>
                             </div>
                         </div>
@@ -411,19 +411,43 @@
           initAutocomplete('newdropoffAddress');
                   $( function() {
             $( "#newdatepickerTo" ).datepicker({
-                dateFormat: 'yy-mm-dd',
+                dateFormat:'d/M/yy',
                 dayNamesMin: ['S', 'M', 'T', 'W', 'T', 'F', 'S'],
-                minDate: "0d"
+                minDate: "0d",
+                onSelect: function(dateText, inst) {
+                    var dateFrom=new Date($( "#newdatepickerFrom" ).val());
+                    var dateTo =new Date($(this).val());
+                    var days=((dateTo-dateFrom)/(1000*60*60*24));
+                    var vechicle_class= $("#vechicle_class").html();
+                    var price_per_day=$("#price_per_day").html();
+                    if(vechicle_class=='e-Begin')
+                       $("#total_tax p").text((days*32.15).toFixed(3));
+                        $("#total_price p").text((days*price_per_day).toFixed(3));
+                   // alert(price_per_day);
+
+            }
             });
              $( "#newdatepickerFrom" ).datepicker({
-                dateFormat: 'yy-mm-dd',
+                dateFormat: 'd/M/yy',
                 dayNamesMin: ['S', 'M', 'T', 'W', 'T', 'F', 'S'],
-                minDate: "0d"
+                minDate: "0d",
+                onSelect: function(dateText, inst) {
+                    var dateTo=new Date($( "#newdatepickerTo" ).val());
+                    var dateFrom =new Date($(this).val());
+                    var days=((dateTo-dateFrom)/(1000*60*60*24));
+                    var vechicle_class= $("#vechicle_class").html();
+                    var price_per_day=$("#price_per_day").html();
+                    if(vechicle_class=='e-Begin')
+                       $("#total_tax p").text(days*32.15);
+                        $("#total_price p").text(days*price_per_day);
+                   // alert(price_per_day);
+
+            }
             });
             });
 
             $(document).ready(function () {
-                $('#modify').on('click',function(e){
+                $('#modify').on('click',function(te){
                 $('#newdropoffAddress').attr('disabled',false);
                 $('#newreturnAddress').attr('disabled',false);
                 $('#newdatepickerFrom').attr('disabled',false);

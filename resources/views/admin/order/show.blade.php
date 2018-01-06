@@ -78,6 +78,15 @@
                                             <td>{{ $data['row']->address}}</td>
                                         </tr>
                                         <tr>
+                                            <th>From date</th>
+                                            <td>{{ $data['row']->from_date}}</td>
+                                        </tr>
+                                        <tr>
+                                            <th>To date</th>
+                                            <td>{{ $data['row']->to_date}}</td>
+                                        </tr>
+
+                                        <tr>
                                             <th>Dropoff Address</th>
                                             <td>{{ $data['row']->dropoff_address}}</td>
                                         </tr>
