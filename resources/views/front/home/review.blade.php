@@ -421,7 +421,11 @@
                     var vechicle_class= $("#vechicle_class").html();
                     var price_per_day=$("#price_per_day").html();
                     if(vechicle_class=='e-Begin')
-                       $("#total_tax p").text((days*32.15).toFixed(3));
+                       $("#total_tax p").text((days*32.15));
+                   else if(vechicle_class=='e-Full')
+                       $("#total_tax p").text((days*38.75));
+                   else
+                       $("#total_tax p").text((days*57.70));
                         $("#total_price p").text((days*price_per_day).toFixed(3));
                    // alert(price_per_day);
 
