@@ -136,13 +136,15 @@ var placeSearch, autocomplete;
 	}).on('changeDate', function(ev){
 		//$(this).datepicker('hide');
 		var dates= new Date(ev.date);
-		$months = new Array('Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec');
+		
+		$months = new Array('Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sedatesp', 'Oct', 'Nov', 'Dec');
 		var day = dates.getDate();
 		var month = dates.getMonth();
 		var year = dates.getFullYear();
 		var newMonth = parseInt(month)+1;
 		jQuery('#searchdate').val(year+'-'+newMonth+'-'+day);
 		//alert($('#searchdate').val());
+		dates.setDate(dates.getDate() + 1);
 		jQuery("#datechange").html(day+"<sub>"+$months[month]+"</sub>");
 		jQuery('#searchdate2').datepicker('setStartDate', dates);
 	});
@@ -154,7 +156,7 @@ var placeSearch, autocomplete;
 		format: 'yyyy-mm-dd'
 	}).on('changeDate', function(ev){
 		//$(this).datepicker('hide');
-		var dates= new Date(ev.date);
+		var dates= new Date(ev.date+1);
 		$months = new Array('Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec');
 		var day = dates.getDate();
 		var month = dates.getMonth();
@@ -162,6 +164,7 @@ var placeSearch, autocomplete;
 		var newMonth = parseInt(month)+1;
 		jQuery('#searchdate2').val(year+'-'+newMonth+'-'+day);
 		jQuery("#datechange2").html(day+"<sub>"+$months[month]+"</sub>");
+		dates.setDate(dates.getDate()+1);
 		jQuery('#searchdate').datepicker('setEndDate', dates);
 	});
 	
