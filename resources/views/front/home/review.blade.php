@@ -409,7 +409,6 @@
         }
           initAutocomplete('newreturnAddress');
           initAutocomplete('newdropoffAddress');
-                  $( function() {
             $( "#newdatepickerTo" ).datepicker({
                 dateFormat:'d/M/yy',
                 dayNamesMin: ['S', 'M', 'T', 'W', 'T', 'F', 'S'],
@@ -441,6 +440,7 @@
                     var days=((dateTo-dateFrom)/(1000*60*60*24));
                     var vechicle_class= $("#vechicle_class").html();
                     var price_per_day=$("#price_per_day").html();
+                    var dates= new Date(ev.date+1);
                     if(vechicle_class=='e-Begin')
                        $("#total_tax p").text(days*32.15);
                     else if(vechicle_class=='e-Full')
@@ -451,7 +451,6 @@
                    // alert(price_per_day);
 
             }
-            });
             });
 
             $(document).ready(function () {
